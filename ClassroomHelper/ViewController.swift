@@ -8,12 +8,21 @@
 
 import UIKit
 
+enum Mode
+{
+    case AddDesk
+    case AddChair
+    case Passive
+}
+
 class ViewController: UIViewController {
     
     let classroom = Classroom()
     var classroomView: UIView!
     
-    var activeDesk: DeskView?
+    var activeFixture: FixtureView?
+    
+    var mode: Mode = .AddDesk
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +45,14 @@ class ViewController: UIViewController {
     @IBAction func studentsPressed(sender: AnyObject) {
     }
     
-    @IBAction func deskPressed(sender: AnyObject) {
+    @IBAction func deskPressed(sender: AnyObject)
+    {
+        self.mode = .AddDesk
     }
     
-    @IBAction func chairPressed(sender: AnyObject) {
+    @IBAction func chairPressed(sender: AnyObject)
+    {
+        self.mode = .AddChair
     }
 
     @IBAction func questionPressed(sender: AnyObject) {
@@ -72,22 +85,27 @@ class ViewController: UIViewController {
         {
             if touch.view == classroomView
             {
-                activeDesk = DeskView()
-                
-                activeDesk!.frame = CGRectZero
-                
-                activeDesk!.center = touch.locationInView(classroomView)
-                
-                classroomView.addSubview(activeDesk!)
-                
-                UIView.animateWithDuration(1.0)
+                if self.mode == .AddDesk || self.mode == .AddChair
                 {
-                    self.activeDesk!.bounds.size = self.classroom.deskSize
+                    activeFixture = mode == .AddDesk ? DeskView() : ChairView()
+                    
+                    activeFixture!.frame = CGRectZero
+                    
+                    activeFixture!.center = touch.locationInView(classroomView)
+                    
+                    classroomView.addSubview(activeFixture!)
+                    
+                    UIView.animateWithDuration(1.0)
+                    {
+                        let fixtureSize = self.mode == .AddDesk ? self.classroom.deskSize : self.classroom.chairSize
+                        
+                        self.activeFixture!.bounds.size = fixtureSize
+                    }
                 }
             }
-            else if let touchedDesk = touch.view as? DeskView
+            else if let touchedFixture = touch.view as? FixtureView
             {
-                activeDesk = touchedDesk
+                activeFixture = touchedFixture
             }
         }
     }
@@ -102,7 +120,7 @@ class ViewController: UIViewController {
         
         for touch in touches
         {
-            if let touchDesk = self.activeDesk
+            if let touchDesk = self.activeFixture
             {
                 let previousLocation = touch.previousLocationInView(classroomView)
                 let currentLocation = touch.locationInView(classroomView)
@@ -118,7 +136,7 @@ class ViewController: UIViewController {
 
         }
         
-        activeDesk = nil
+        activeFixture = nil
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -131,7 +149,7 @@ class ViewController: UIViewController {
         
         for touch in touches
         {
-            if let touchDesk = self.activeDesk
+            if let touchDesk = self.activeFixture
             {
                 let previousLocation = touch.previousLocationInView(classroomView)
                 let currentLocation = touch.locationInView(classroomView)

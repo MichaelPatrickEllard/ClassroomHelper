@@ -83,7 +83,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="cUi-h7-711" secondAttribute="trailing" id="Wi2-kf-NlH"/>
                             <constraint firstAttribute="bottom" secondItem="cUi-h7-711" secondAttribute="bottom" id="Xps-LP-BNc"/>
