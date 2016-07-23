@@ -13,6 +13,7 @@ class DeskView: UIView
     override init(frame: CGRect)
     {
         super.init(frame: frame)
+        self.backgroundColor = UIColor.blueColor()
         addSwipeGesture()
     }
     
@@ -23,7 +24,7 @@ class DeskView: UIView
     
     func addSwipeGesture()
     {
-      
+        
     }
     
     func handleSwipe()

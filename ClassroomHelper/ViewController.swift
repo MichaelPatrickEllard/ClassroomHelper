@@ -9,10 +9,21 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let classroom = Classroom()
+    var classroomView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let classroomFrame = CGRect(origin: CGPoint(x: 0, y: 0),
+                                    size: classroom.roomSize)
+        
+        classroomView = UIView(frame: classroomFrame)
+        
+        classroomView.backgroundColor = UIColor.whiteColor()
+        
+        self.view.addSubview(classroomView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +55,40 @@ class ViewController: UIViewController {
     
     @IBAction func videoPressed(sender: AnyObject) {
     }
+    
+    // MARK: Touch Handling Code
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        for touch in touches
+        {
+            if touch.view == classroomView
+            {
+                let newDesk = DeskView()
+                
+                newDesk.frame = CGRect(origin: touch.locationInView(classroomView),
+                                       size: classroom.deskSize)
+                
+                classroomView.addSubview(newDesk)
+            }
+        }
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    
+        // Do nothing
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    
+        // Do nothing
+    }
+    
+    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+        
+        // Do nothing
+    }
+    
     
 }
 
