@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     let classroom = Classroom()
     var classroomView: UIView!
+    
+    var activeDesk: DeskView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,28 +62,68 @@ class ViewController: UIViewController {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
+        if touches.count > 1
+        {
+            NSLog("Unexpectedly got multi-touch action!")
+            return
+        }
+        
         for touch in touches
         {
             if touch.view == classroomView
             {
-                let newDesk = DeskView()
+                activeDesk = DeskView()
                 
-                newDesk.frame = CGRect(origin: touch.locationInView(classroomView),
+                activeDesk!.frame = CGRect(origin: CGPointZero,
                                        size: classroom.deskSize)
                 
-                classroomView.addSubview(newDesk)
+                activeDesk!.center = touch.locationInView(classroomView)
+                
+                classroomView.addSubview(activeDesk!)
+            }
+            else if let touchedDesk = touch.view as? DeskView
+            {
+                activeDesk = touchedDesk
+                
+                activeDesk!.center = touch.locationInView(classroomView)
             }
         }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
     
-        // Do nothing
+        if touches.count > 1
+        {
+            NSLog("Unexpectedly got multi-touch action!")
+            return
+        }
+        
+        for touch in touches
+        {
+            if let touchDesk = self.activeDesk
+            {
+                touchDesk.center = touch.locationInView(classroomView)
+            }
+        }
+        
+        activeDesk = nil
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
     
-        // Do nothing
+        if touches.count > 1
+        {
+            NSLog("Unexpectedly got multi-touch action!")
+            return
+        }
+        
+        for touch in touches
+        {
+            if let touchDesk = self.activeDesk
+            {
+                touchDesk.center = touch.locationInView(classroomView)
+            }
+        }
     }
     
     override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
