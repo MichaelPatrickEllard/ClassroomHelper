@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var classroomView: UIView!
     
     var activeFixture: FixtureView?
+    var activeStudentLabel: StudentLabel?
     
     var mode: Mode = .AddDesk
 
@@ -107,6 +108,10 @@ class ViewController: UIViewController {
             {
                 activeFixture = touchedFixture
             }
+            else if let selectedStudent = touch.view as? StudentLabel
+            {
+                activeStudentLabel = selectedStudent
+            }
         }
     }
     
@@ -174,6 +179,19 @@ class ViewController: UIViewController {
                 
                 touchDesk.center = CGPoint(x: oldCenter.x + xDelta,
                                            y: oldCenter.y + yDelta)
+            }
+            else if let selectedStudent = self.activeStudentLabel
+            {
+                let previousLocation = touch.previousLocationInView(self.view)
+                let currentLocation = touch.locationInView(self.view)
+                
+                let xDelta = currentLocation.x - previousLocation.x
+                let yDelta = currentLocation.y - previousLocation.y
+                
+                let oldCenter = selectedStudent.center
+                
+                selectedStudent.center = CGPoint(x: oldCenter.x + xDelta,
+                                                 y: oldCenter.y + yDelta)
             }
         }
     }
