@@ -120,18 +120,31 @@ class ViewController: UIViewController {
         
         for touch in touches
         {
-            if let touchDesk = self.activeFixture
+            if let touchFixture = self.activeFixture
             {
-                let previousLocation = touch.previousLocationInView(classroomView)
-                let currentLocation = touch.locationInView(classroomView)
-                
-                let xDelta = currentLocation.x - previousLocation.x
-                let yDelta = currentLocation.y - previousLocation.y
-                
-                let oldCenter = touchDesk.center
-                
-                touchDesk.center = CGPoint(x: oldCenter.x + xDelta,
-                                           y: oldCenter.y + yDelta)
+                if self.classroomView.pointInside(touch.locationInView(self.classroomView), withEvent: event)
+                {
+                    let previousLocation = touch.previousLocationInView(classroomView)
+                    let currentLocation = touch.locationInView(classroomView)
+                    
+                    let xDelta = currentLocation.x - previousLocation.x
+                    let yDelta = currentLocation.y - previousLocation.y
+                    
+                    let oldCenter = touchFixture.center
+                    
+                    touchFixture.center = CGPoint(x: oldCenter.x + xDelta,
+                                               y: oldCenter.y + yDelta)
+                }
+                else
+                {
+                    UIView.animateWithDuration(1.0, animations: {
+                        
+                            touchFixture.bounds.size = CGSizeZero
+                        },
+                                               completion: {(Bool) -> Void in
+                        touchFixture.removeFromSuperview()
+                    })
+                }
             }
 
         }
