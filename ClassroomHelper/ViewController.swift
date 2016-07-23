@@ -74,12 +74,16 @@ class ViewController: UIViewController {
             {
                 activeDesk = DeskView()
                 
-                activeDesk!.frame = CGRect(origin: CGPointZero,
-                                       size: classroom.deskSize)
+                activeDesk!.frame = CGRectZero
                 
                 activeDesk!.center = touch.locationInView(classroomView)
                 
                 classroomView.addSubview(activeDesk!)
+                
+                UIView.animateWithDuration(1.0)
+                {
+                    self.activeDesk!.bounds.size = self.classroom.deskSize
+                }
             }
             else if let touchedDesk = touch.view as? DeskView
             {
