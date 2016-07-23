@@ -88,8 +88,6 @@ class ViewController: UIViewController {
             else if let touchedDesk = touch.view as? DeskView
             {
                 activeDesk = touchedDesk
-                
-                activeDesk!.center = touch.locationInView(classroomView)
             }
         }
     }
@@ -106,8 +104,18 @@ class ViewController: UIViewController {
         {
             if let touchDesk = self.activeDesk
             {
-                touchDesk.center = touch.locationInView(classroomView)
+                let previousLocation = touch.previousLocationInView(classroomView)
+                let currentLocation = touch.locationInView(classroomView)
+                
+                let xDelta = currentLocation.x - previousLocation.x
+                let yDelta = currentLocation.y - previousLocation.y
+                
+                let oldCenter = touchDesk.center
+                
+                touchDesk.center = CGPoint(x: oldCenter.x + xDelta,
+                                           y: oldCenter.y + yDelta)
             }
+
         }
         
         activeDesk = nil
@@ -125,7 +133,16 @@ class ViewController: UIViewController {
         {
             if let touchDesk = self.activeDesk
             {
-                touchDesk.center = touch.locationInView(classroomView)
+                let previousLocation = touch.previousLocationInView(classroomView)
+                let currentLocation = touch.locationInView(classroomView)
+                
+                let xDelta = currentLocation.x - previousLocation.x
+                let yDelta = currentLocation.y - previousLocation.y
+                
+                let oldCenter = touchDesk.center
+                
+                touchDesk.center = CGPoint(x: oldCenter.x + xDelta,
+                                           y: oldCenter.y + yDelta)
             }
         }
     }
