@@ -13,7 +13,7 @@ class DeskView: FixtureView
     override init(frame: CGRect)
     {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.blueColor()
+        self.backgroundColor = UIColor(white: 0.75, alpha: 0.4)
     }
     
     required init?(coder aDecoder: NSCoder)
