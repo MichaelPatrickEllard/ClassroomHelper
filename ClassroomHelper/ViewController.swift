@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 enum Mode
 {
@@ -29,9 +30,15 @@ class ViewController: UIViewController {
     var activeFixture: FixtureView?
     var activeStudentLabel: StudentLabel?
     
+    var cameraIsOn = false
+    
+    var captureSession: AVCaptureSession?
+    
     @IBOutlet weak var studentsButton: UIButton!
     
     var mode: Mode = .AddDesk
+    
+    var previewLayer: AVCaptureVideoPreviewLayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +86,53 @@ class ViewController: UIViewController {
     @IBAction func transformPressed(sender: AnyObject) {
     }
     
-    @IBAction func videoPressed(sender: AnyObject) {
+    @IBAction func videoPressed(sender: AnyObject)
+    {
+        if !cameraIsOn
+        {
+            let session = AVCaptureSession()
+            session.sessionPreset = AVCaptureSessionPresetHigh
+            
+            let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        
+            do
+            {
+                let input = try AVCaptureDeviceInput(device: backCamera)
+                
+                session.addInput(input)
+                
+                session.startRunning()
+                
+                previewLayer = AVCaptureVideoPreviewLayer(session: session)
+                
+                previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+                
+                self.classroomView.layer.insertSublayer(previewLayer!, atIndex: 0)
+                
+                previewLayer!.frame = self.classroomView.frame
+                
+                self.captureSession = session
+                
+                cameraIsOn = true
+
+            }
+            catch
+            {
+                NSLog("Dang!  Camera initialization failed...")
+            }
+        }
+        else
+        {
+            cameraIsOn = false
+            
+            self.captureSession?.stopRunning()
+            
+            previewLayer?.removeFromSuperlayer()
+            
+            previewLayer = nil
+            
+            self.captureSession = nil
+        }
     }
     
     // MARK: Touch Handling Code
