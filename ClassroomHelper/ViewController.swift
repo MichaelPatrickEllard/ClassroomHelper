@@ -359,7 +359,7 @@ class ViewController: UIViewController {
     {
         if animated
         {
-            UIView.animateWithDuration(1.0)
+            UIView.animateWithDuration(0.5)
             {
                 self.layoutStudentLabels()
             }
