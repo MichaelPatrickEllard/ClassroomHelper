@@ -13,6 +13,7 @@ import AVFoundation
 class ViewController: UIViewController {
     
     let classroom = Classroom()
+    var classroomBackingView: UIView!
     var classroomView: UIView!
     
     @IBOutlet weak var toolArea: UIView!
@@ -32,7 +33,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var studentsButton: UIButton!
     
+    @IBOutlet weak var threeDSlider: UISlider!
     var previewLayer: AVCaptureVideoPreviewLayer?
+    
+    @IBOutlet weak var panSlider: UISlider!
+    
+    @IBOutlet weak var zoomSlider: UISlider!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +50,15 @@ class ViewController: UIViewController {
         
         classroomView = UIView(frame: classroomFrame)
         
-        classroomView.backgroundColor = UIColor.whiteColor()
+        classroomView.backgroundColor = UIColor.clearColor()
         
         self.view.insertSubview(classroomView, atIndex:0)
+        
+        classroomBackingView = UIView(frame: classroomFrame)
+        
+        classroomBackingView.backgroundColor = UIColor.whiteColor()
+        
+        self.view.insertSubview(classroomBackingView, atIndex: 0)
         
         addStudentLabels()
     }
@@ -85,9 +99,9 @@ class ViewController: UIViewController {
                 
                 previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
                 
-                self.classroomView.layer.insertSublayer(previewLayer!, atIndex: 0)
+                self.classroomBackingView.layer.addSublayer(previewLayer!)
                 
-                previewLayer!.frame = self.classroomView.frame
+                previewLayer!.frame = self.classroomBackingView.frame
                 
                 self.captureSession = session
                 
@@ -339,6 +353,20 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func transformView(sender: AnyObject)
+    {
+        //classroomView.layer.zPosition = 100
+        
+        classroomView.layer.anchorPoint = CGPointMake(CGFloat(panSlider.value), CGFloat(zoomSlider.value));
+        
+        var projection = CATransform3DIdentity
+        projection.m34 = CGFloat(self.threeDSlider.value) / 100
+        let scale = CATransform3DMakeScale(1.0, /* 7 * sqrt(2) */ 1.5, 1.0)
+        let translation = CATransform3DRotate(scale, CGFloat(-M_PI) / 4, 1, 0, 0)
+        classroomView.layer.transform = CATransform3DConcat(translation, projection);
+    }
+
     
 }
 

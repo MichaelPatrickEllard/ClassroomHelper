@@ -60,12 +60,21 @@
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7le-Gn-rJT">
                                         <rect key="frame" x="93" y="284" width="118" height="31"/>
+                                        <connections>
+                                            <action selector="transformView:" destination="BYZ-38-t0r" eventType="valueChanged" id="7jt-xX-bee"/>
+                                        </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="P3m-QG-hqW">
                                         <rect key="frame" x="93" y="336" width="118" height="31"/>
+                                        <connections>
+                                            <action selector="transformView:" destination="BYZ-38-t0r" eventType="valueChanged" id="V4x-dL-Cdi"/>
+                                        </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eM1-WI-fFV">
                                         <rect key="frame" x="93" y="390" width="118" height="31"/>
+                                        <connections>
+                                            <action selector="transformView:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ipf-Es-p0P"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcS-Dt-3lC">
                                         <rect key="frame" x="30" y="340" width="29" height="21"/>
@@ -115,8 +124,11 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="fixtureTypes" destination="FKO-Vf-pUW" id="fni-bP-dv6"/>
+                        <outlet property="panSlider" destination="P3m-QG-hqW" id="88H-Ia-Ubi"/>
                         <outlet property="studentsButton" destination="oH3-b8-JLm" id="r9o-e6-Frs"/>
+                        <outlet property="threeDSlider" destination="7le-Gn-rJT" id="rDk-U0-Pps"/>
                         <outlet property="toolArea" destination="cUi-h7-711" id="E2Z-ij-xqh"/>
+                        <outlet property="zoomSlider" destination="eM1-WI-fFV" id="Cns-Q3-6zy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
