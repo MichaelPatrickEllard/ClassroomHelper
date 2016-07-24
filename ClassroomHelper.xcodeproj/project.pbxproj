@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E301F8F61D4417AD005EFB4B /* StudentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E301F8F51D4417AD005EFB4B /* StudentLabel.swift */; };
+		E301F8F81D4424F1005EFB4B /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = E301F8F71D4424F1005EFB4B /* Student.swift */; };
 		E31E6CA71D43E22800798AA9 /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E6CA61D43E22800798AA9 /* Classroom.swift */; };
 		E33257181D4406E400EB9491 /* FixtureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33257171D4406E400EB9491 /* FixtureView.swift */; };
 		E332571A1D44077D00EB9491 /* ChairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33257191D44077D00EB9491 /* ChairView.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		E301F8F51D4417AD005EFB4B /* StudentLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLabel.swift; sourceTree = "<group>"; };
+		E301F8F71D4424F1005EFB4B /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		E31E6CA61D43E22800798AA9 /* Classroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
 		E33257171D4406E400EB9491 /* FixtureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureView.swift; sourceTree = "<group>"; };
 		E33257191D44077D00EB9491 /* ChairView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChairView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				E3EF248B1D42F4EB0029714F /* LaunchScreen.storyboard */,
 				E3EF248E1D42F4EB0029714F /* Info.plist */,
 				E301F8F51D4417AD005EFB4B /* StudentLabel.swift */,
+				E301F8F71D4424F1005EFB4B /* Student.swift */,
 			);
 			path = ClassroomHelper;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				E301F8F61D4417AD005EFB4B /* StudentLabel.swift in Sources */,
 				E332571A1D44077D00EB9491 /* ChairView.swift in Sources */,
 				E3EF24831D42F4EB0029714F /* AppDelegate.swift in Sources */,
+				E301F8F81D4424F1005EFB4B /* Student.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

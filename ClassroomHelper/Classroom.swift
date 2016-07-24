@@ -10,6 +10,8 @@ import UIKit
 
 class Classroom: NSObject
 {
+    let students = Student.defaultClassList()
+    
     let deskSize = CGSize(width: 200, height: 120)
     let chairSize = CGSize(width: 80, height: 80)
     let roomSize = CGSize(width: 680, height: 680)

@@ -10,5 +10,19 @@ import UIKit
 
 class StudentLabel: UILabel
 {
-
+    let student: Student
+    
+    init(student: Student)
+    {
+        self.student = student
+        super.init(frame: CGRectZero)
+        self.text = student.name
+        self.userInteractionEnabled = true
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        self.student = Student(name: "Unitialized", comments:"")
+        super.init(coder: aDecoder)
+    }
 }

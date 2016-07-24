@@ -12,6 +12,8 @@ class FixtureView: UIView
 {
     var referenceTransform = CGAffineTransformIdentity
     
+    var studentLabel : StudentLabel?
+    
     override init(frame: CGRect)
     {
         super.init(frame: frame)
@@ -44,5 +46,22 @@ class FixtureView: UIView
             self.referenceTransform = self.transform
         }
     }
+    
+    // MARK: Appearance changes
+    
+//    func highlight()
+//    {
+//        // Do Nothing
+//    }
+//    
+//    func startPulsing()
+//    {
+//        
+//    }
+//    
+//    func stopPulsing()
+//    {
+//        
+//    }
 
 }

@@ -20,8 +20,16 @@ class ViewController: UIViewController {
     let classroom = Classroom()
     var classroomView: UIView!
     
+    @IBOutlet weak var toolArea: UIView!
+    
+    var studentLabels: [StudentLabel]!
+    
+    var fixtureViews = [FixtureView]()
+    
     var activeFixture: FixtureView?
     var activeStudentLabel: StudentLabel?
+    
+    @IBOutlet weak var studentsButton: UIButton!
     
     var mode: Mode = .AddDesk
 
@@ -35,7 +43,9 @@ class ViewController: UIViewController {
         
         classroomView.backgroundColor = UIColor.whiteColor()
         
-        self.view.addSubview(classroomView)
+        self.view.insertSubview(classroomView, atIndex:0)
+        
+        addStudentLabels()
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,6 +106,8 @@ class ViewController: UIViewController {
                     
                     classroomView.addSubview(activeFixture!)
                     
+                    fixtureViews.append(activeFixture!)
+                    
                     UIView.animateWithDuration(1.0)
                     {
                         let fixtureSize = self.mode == .AddDesk ? self.classroom.deskSize : self.classroom.chairSize
@@ -110,6 +122,8 @@ class ViewController: UIViewController {
             }
             else if let selectedStudent = touch.view as? StudentLabel
             {
+                
+                
                 activeStudentLabel = selectedStudent
             }
         }
@@ -142,14 +156,46 @@ class ViewController: UIViewController {
                 }
                 else
                 {
-                    UIView.animateWithDuration(1.0, animations: {
-                        
+                    UIView.animateWithDuration(1.0, animations:
+                        {
                             touchFixture.bounds.size = CGSizeZero
                         },
-                                               completion: {(Bool) -> Void in
-                        touchFixture.removeFromSuperview()
-                    })
+                        completion:
+                        {(Bool) -> Void in
+                            touchFixture.removeFromSuperview()
+                            if let sLabel = touchFixture.studentLabel
+                            {
+                                self.toolArea.addSubview(sLabel)
+                                sLabel.student.desk = nil
+                                sLabel.frame = CGRectZero
+                                touchFixture.studentLabel = nil
+                                
+                                self.layoutStudentLabels(animated: true)
+                            }
+                            
+                            self.fixtureViews = self.fixtureViews.filter({$0 !== touchFixture})
+                            
+                            
+                        })
                 }
+            }
+            else if let selectedStudent = self.activeStudentLabel
+            {
+                for fixtureView in fixtureViews
+                {
+                    if fixtureView.studentLabel == nil && fixtureView.pointInside(touch.locationInView(fixtureView), withEvent: event)
+                    {
+                        fixtureView.studentLabel = selectedStudent
+                        selectedStudent.student.desk = fixtureView
+                        
+                        fixtureView.addSubview(selectedStudent)
+                        let newCenter = CGPoint(x: fixtureView.bounds.size.width / 2, y: fixtureView.bounds.size.height / 2)
+                        selectedStudent.center = newCenter
+                        break
+                    }
+                }
+                
+                self.layoutStudentLabels(animated: true)
             }
 
         }
@@ -199,6 +245,61 @@ class ViewController: UIViewController {
     override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
         
         // Do nothing
+    }
+    
+    func addStudentLabels()
+    {
+        var sLabels = [StudentLabel]()
+        
+        for student in self.classroom.students
+        {
+            let newLabel = StudentLabel(student: student)
+            
+            sLabels.append(newLabel)
+            
+            toolArea.addSubview(newLabel)
+            
+        }
+        
+        self.studentLabels = sLabels
+        
+        layoutStudentLabels(animated: false)
+    }
+    
+    func layoutStudentLabels(animated animated: Bool)
+    {
+        if animated
+        {
+            UIView.animateWithDuration(1.0)
+            {
+                self.layoutStudentLabels()
+            }
+        }
+        else
+        {
+            layoutStudentLabels()
+        }
+    }
+    
+    
+    func layoutStudentLabels()
+    {
+        var unusedLabelCount: CGFloat = 0
+        
+        for label in studentLabels
+        {
+            if label.student.desk == nil
+            {
+                unusedLabelCount += 1
+                
+                let labelSize = label.intrinsicContentSize()
+                
+                label.bounds.size = labelSize
+                
+                label.center = CGPoint(x: studentsButton.center.x,
+                                       y: studentsButton.center.y + unusedLabelCount * (labelSize.height + 10))
+            }
+        }
     }
     
     
