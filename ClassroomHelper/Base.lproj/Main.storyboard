@@ -20,62 +20,83 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUi-h7-711">
                                 <rect key="frame" x="784" y="0.0" width="240" height="768"/>
                                 <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-Vf-pUW">
+                                        <rect key="frame" x="26" y="36" width="189" height="29"/>
+                                        <segments>
+                                            <segment title="Desk"/>
+                                            <segment title="Chair"/>
+                                        </segments>
+                                    </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oH3-b8-JLm">
-                                        <rect key="frame" x="94" y="486" width="62" height="30"/>
+                                        <rect key="frame" x="89" y="514" width="62" height="30"/>
                                         <state key="normal" title="Students"/>
-                                        <connections>
-                                            <action selector="studentsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZRy-0M-Xgs"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2Q-X9-e9h">
-                                        <rect key="frame" x="100" y="36" width="35" height="30"/>
-                                        <state key="normal" title="Desk"/>
-                                        <connections>
-                                            <action selector="deskPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CIa-Ae-jcf"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVf-4q-H62">
-                                        <rect key="frame" x="99" y="98" width="37" height="30"/>
-                                        <state key="normal" title="Chair"/>
-                                        <connections>
-                                            <action selector="chairPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yA5-EK-lo5"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sku-1I-7Xu">
-                                        <rect key="frame" x="87" y="162" width="62" height="30"/>
+                                        <rect key="frame" x="40" y="108" width="62" height="30"/>
                                         <state key="normal" title="Question"/>
                                         <connections>
                                             <action selector="questionPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TUO-wc-RoP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqz-lp-xaw">
-                                        <rect key="frame" x="92" y="228" width="51" height="30"/>
+                                        <rect key="frame" x="147" y="108" width="51" height="30"/>
                                         <state key="normal" title="Answer"/>
                                         <connections>
                                             <action selector="answerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="myv-xk-UM0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o72-zo-Is3">
-                                        <rect key="frame" x="86" y="291" width="73" height="30"/>
+                                        <rect key="frame" x="89" y="172" width="73" height="30"/>
                                         <state key="normal" title="Classroom"/>
                                         <connections>
                                             <action selector="classroomPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aoQ-ND-1gq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDR-Bw-XGY">
-                                        <rect key="frame" x="88" y="358" width="71" height="30"/>
-                                        <state key="normal" title="Transform"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LB-FY-d8E">
+                                        <rect key="frame" x="31" y="452" width="44" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7le-Gn-rJT">
+                                        <rect key="frame" x="93" y="284" width="118" height="31"/>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="P3m-QG-hqW">
+                                        <rect key="frame" x="93" y="336" width="118" height="31"/>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eM1-WI-fFV">
+                                        <rect key="frame" x="93" y="390" width="118" height="31"/>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcS-Dt-3lC">
+                                        <rect key="frame" x="30" y="340" width="29" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zoom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJd-Yb-uUz">
+                                        <rect key="frame" x="30" y="394" width="45" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3D" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJv-f8-UTG">
+                                        <rect key="frame" x="30" y="288" width="23" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Transform" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXJ-us-jRB">
+                                        <rect key="frame" x="30" y="237" width="79" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vsc-qi-O5C">
+                                        <rect key="frame" x="95" y="447" width="51" height="31"/>
                                         <connections>
-                                            <action selector="transformPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2oD-S3-ZWQ"/>
+                                            <action selector="videoToggled:" destination="BYZ-38-t0r" eventType="valueChanged" id="fS4-Wa-xVx"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="er1-8A-EVQ">
-                                        <rect key="frame" x="103" y="421" width="40" height="30"/>
-                                        <state key="normal" title="Video"/>
-                                        <connections>
-                                            <action selector="videoPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hyR-V6-UdW"/>
-                                        </connections>
-                                    </button>
+                                    </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -93,6 +114,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="fixtureTypes" destination="FKO-Vf-pUW" id="fni-bP-dv6"/>
                         <outlet property="studentsButton" destination="oH3-b8-JLm" id="r9o-e6-Frs"/>
                         <outlet property="toolArea" destination="cUi-h7-711" id="E2Z-ij-xqh"/>
                     </connections>

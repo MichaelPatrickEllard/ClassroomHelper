@@ -9,12 +9,6 @@
 import UIKit
 import AVFoundation
 
-enum Mode
-{
-    case AddDesk
-    case AddChair
-    case Passive
-}
 
 class ViewController: UIViewController {
     
@@ -34,9 +28,9 @@ class ViewController: UIViewController {
     
     var captureSession: AVCaptureSession?
     
-    @IBOutlet weak var studentsButton: UIButton!
+    @IBOutlet weak var fixtureTypes: UISegmentedControl!
     
-    var mode: Mode = .AddDesk
+    @IBOutlet weak var studentsButton: UIButton!
     
     var previewLayer: AVCaptureVideoPreviewLayer?
 
@@ -60,19 +54,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func studentsPressed(sender: AnyObject) {
-    }
-    
-    @IBAction func deskPressed(sender: AnyObject)
-    {
-        self.mode = .AddDesk
-    }
-    
-    @IBAction func chairPressed(sender: AnyObject)
-    {
-        self.mode = .AddChair
-    }
-
     @IBAction func questionPressed(sender: AnyObject) {
     }
     
@@ -83,12 +64,9 @@ class ViewController: UIViewController {
     @IBAction func classroomPressed(sender: AnyObject) {
     }
     
-    @IBAction func transformPressed(sender: AnyObject) {
-    }
-    
-    @IBAction func videoPressed(sender: AnyObject)
+    @IBAction func videoToggled(sender: UISwitch)
     {
-        if !cameraIsOn
+        if sender.on
         {
             let session = AVCaptureSession()
             session.sessionPreset = AVCaptureSessionPresetHigh
@@ -149,9 +127,9 @@ class ViewController: UIViewController {
         {
             if touch.view == classroomView
             {
-                if self.mode == .AddDesk || self.mode == .AddChair
+                if true // May add a test later that allows us to turn off adding fixtures
                 {
-                    activeFixture = mode == .AddDesk ? DeskView() : ChairView()
+                    activeFixture = fixtureTypes.selectedSegmentIndex == 0 ? DeskView() : ChairView()
                     
                     activeFixture!.frame = CGRectZero
                     
@@ -163,7 +141,7 @@ class ViewController: UIViewController {
                     
                     UIView.animateWithDuration(1.0)
                     {
-                        let fixtureSize = self.mode == .AddDesk ? self.classroom.deskSize : self.classroom.chairSize
+                        let fixtureSize = self.fixtureTypes.selectedSegmentIndex == 0 ? self.classroom.deskSize : self.classroom.chairSize
                         
                         self.activeFixture!.bounds.size = fixtureSize
                     }
