@@ -22,6 +22,9 @@ class ViewController: UIViewController {
     
     var fixtureViews = [FixtureView]()
     
+    var activeMarker: UIView!
+    var markerHome: CGPoint!
+    
     var activeFixture: FixtureView?
     var activeStudentLabel: StudentLabel?
     
@@ -139,7 +142,12 @@ class ViewController: UIViewController {
         
         for touch in touches
         {
-            if touch.view == classroomView
+            if touch.view?.tag == 43 || touch.view?.tag == 47
+            {
+                activeMarker = touch.view
+                markerHome = touch.view!.center
+            }
+            else if touch.view == classroomView
             {
                 if true // May add a test later that allows us to turn off adding fixtures
                 {
@@ -189,7 +197,24 @@ class ViewController: UIViewController {
         
         for touch in touches
         {
-            if let touchFixture = self.activeFixture
+            if touch.view?.tag == 43 || touch.view?.tag == 47
+            {
+                for fixtureView in fixtureViews
+                {
+                    if fixtureView.studentLabel != nil && fixtureView.pointInside(touch.locationInView(fixtureView), withEvent: event)
+                    {
+                        let markerString = touch.view?.tag == 47 ? "🔶" : "🔷"
+                        
+                        fixtureView.studentLabel?.addMarker(markerString)
+                        
+                        activeMarker.center = markerHome
+                    
+                        break
+                    }
+                }
+
+            }
+            else if let touchFixture = self.activeFixture
             {
                 if self.classroomView.pointInside(touch.locationInView(self.classroomView), withEvent: event)
                 {
@@ -264,7 +289,20 @@ class ViewController: UIViewController {
         
         for touch in touches
         {
-            if let touchDesk = self.activeFixture
+            if touch.view?.tag == 43 || touch.view?.tag == 47
+            {
+                let previousLocation = touch.previousLocationInView(classroomView)
+                let currentLocation = touch.locationInView(classroomView)
+                
+                let xDelta = currentLocation.x - previousLocation.x
+                let yDelta = currentLocation.y - previousLocation.y
+                
+                let oldCenter = activeMarker.center
+                
+                activeMarker.center = CGPoint(x: oldCenter.x + xDelta,
+                                           y: oldCenter.y + yDelta)
+            }
+            else if let touchDesk = self.activeFixture
             {
                 let previousLocation = touch.previousLocationInView(classroomView)
                 let currentLocation = touch.locationInView(classroomView)
