@@ -27,12 +27,17 @@ class Student: NSObject
     {
         var students = [Student]()
         
+        students.append(Student(name: "Winnie Chen", comments: "Picks up new topics fast."))
         students.append(Student(name: "Mike Ellard", comments: "Thinks he's supposed to be teaching the class."))
         students.append(Student(name: "Bruce Chou", comments: "Knows everyone in the class."))
-        students.append(Student(name: "Thomas Edison", comments: "When asked about his homework, says, 'I've tried 999 ways that didn't work."))
+        students.append(Student(name: "Ada Lovelace", comments: "Mathematics as Poetry."))
+        students.append(Student(name: "Jacob Dudney", comments: "Great UX Designer."))
+        students.append(Student(name: "Grace Hopper", comments: "Get her to show you her millisecond."))
+        students.append(Student(name: "Chris Lattner", comments: "He's a pretty swift guy."))
         students.append(Student(name: "Nikola Tesla", comments: "Shouldn't be seated next to Edison."))
+        students.append(Student(name: "Charles Babbage", comments: "If you build it, they will come."))
+        students.append(Student(name: "Thomas Edison", comments: "When asked about his homework, says, 'I've tried 999 ways that didn't work."))
         students.append(Student(name: "Steve Wozniak", comments: "Doesn't trust a computer unless he can throw it out the window.  Didn't trust his computer.  Threw it out the window."))
-        students.append(Student(name: "Winnie Chen", comments: "Picks up new topics fast."))
         students.append(Student(name: "Alan Turing", comments: "Seems a little wooden sometimes. Never quite sure if he's a person or a computer."))
     
         return students
