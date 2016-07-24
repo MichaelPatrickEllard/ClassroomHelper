@@ -100,6 +100,8 @@ class ViewController: UIViewController {
                 
                 previewLayer = AVCaptureVideoPreviewLayer(session: session)
                 
+                previewLayer!.connection.videoOrientation = .LandscapeRight
+                
                 previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
                 
                 self.classroomBackingView.layer.addSublayer(previewLayer!)
