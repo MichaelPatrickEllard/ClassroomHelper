@@ -149,7 +149,7 @@ class ViewController: UIViewController {
             }
             else if touch.view == classroomView
             {
-                if true // May add a test later that allows us to turn off adding fixtures
+                if self.fixtureTypes.selectedSegmentIndex != 2
                 {
                     activeFixture = fixtureTypes.selectedSegmentIndex == 0 ? DeskView() : ChairView()
                     
@@ -405,6 +405,25 @@ class ViewController: UIViewController {
         classroomView.layer.transform = CATransform3DConcat(translation, projection);
     }
 
+    @IBAction func transformToggled(sender: UISwitch)
+    {
+        if sender.on
+        {
+            threeDSlider.userInteractionEnabled = true
+            panSlider.userInteractionEnabled = true
+            zoomSlider.userInteractionEnabled = true
+            
+            self.transformView(self)
+        }
+        else
+        {
+            threeDSlider.userInteractionEnabled = false
+            panSlider.userInteractionEnabled = false
+            zoomSlider.userInteractionEnabled = false
+            
+            self.classroomView.layer.transform = CATransform3DIdentity
+        }
+    }
     
 }
 
