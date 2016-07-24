@@ -153,9 +153,14 @@ class ViewController: UIViewController {
             }
             else if let selectedStudent = touch.view as? StudentLabel
             {
-                
-                
-                activeStudentLabel = selectedStudent
+                if let studentFixture = selectedStudent.student.desk
+                {
+                    activeFixture = studentFixture
+                }
+                else
+                {
+                    activeStudentLabel = selectedStudent
+                }
             }
         }
     }
@@ -232,6 +237,7 @@ class ViewController: UIViewController {
         }
         
         activeFixture = nil
+        activeStudentLabel = nil
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
