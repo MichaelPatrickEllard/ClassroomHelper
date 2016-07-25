@@ -12,6 +12,7 @@
 		E31E6CA71D43E22800798AA9 /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E6CA61D43E22800798AA9 /* Classroom.swift */; };
 		E33257181D4406E400EB9491 /* FixtureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33257171D4406E400EB9491 /* FixtureView.swift */; };
 		E332571A1D44077D00EB9491 /* ChairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33257191D44077D00EB9491 /* ChairView.swift */; };
+		E351D9D71D4653E500494A52 /* ReadMe.md in Sources */ = {isa = PBXBuildFile; fileRef = E351D9D61D4653E500494A52 /* ReadMe.md */; };
 		E3EF24831D42F4EB0029714F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF24821D42F4EB0029714F /* AppDelegate.swift */; };
 		E3EF24851D42F4EB0029714F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF24841D42F4EB0029714F /* ViewController.swift */; };
 		E3EF24881D42F4EB0029714F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3EF24861D42F4EB0029714F /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		E31E6CA61D43E22800798AA9 /* Classroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
 		E33257171D4406E400EB9491 /* FixtureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureView.swift; sourceTree = "<group>"; };
 		E33257191D44077D00EB9491 /* ChairView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChairView.swift; sourceTree = "<group>"; };
+		E351D9D61D4653E500494A52 /* ReadMe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 		E3EF247F1D42F4EB0029714F /* ClassroomHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassroomHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3EF24821D42F4EB0029714F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3EF24841D42F4EB0029714F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 		E3EF24761D42F4EB0029714F = {
 			isa = PBXGroup;
 			children = (
+				E351D9D61D4653E500494A52 /* ReadMe.md */,
 				E3EF24811D42F4EB0029714F /* ClassroomHelper */,
 				E3EF24801D42F4EB0029714F /* Products */,
 			);
@@ -161,6 +164,7 @@
 				E332571A1D44077D00EB9491 /* ChairView.swift in Sources */,
 				E3EF24831D42F4EB0029714F /* AppDelegate.swift in Sources */,
 				E301F8F81D4424F1005EFB4B /* Student.swift in Sources */,
+				E351D9D71D4653E500494A52 /* ReadMe.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
